@@ -12,7 +12,7 @@ public class Box<T extends Fruit> {
         return box;
     }
 
-    public void addFruit(T fruit){
+    public void addFruit(T fruit) {
         box.add(fruit);
     }
 
@@ -28,7 +28,7 @@ public class Box<T extends Fruit> {
         return Math.abs(getWeight() - boxWithSomething.getWeight()) < 0.0001f;
     }
 
-    public void replaceFruitsToAnotherBox(Box<T> anotherBox){
+    public void replaceFruitsToAnotherBox(Box<T> anotherBox) {
         anotherBox.box.addAll(this.box);
         this.box.clear();
     }

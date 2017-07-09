@@ -70,7 +70,7 @@ public class Main {
         array[firstNumberPos] ^= array[secondNumberPos];
     }
 
-    private static void swapTwoElementsInArray (Object[] array, int firstNumPos, int secondNumPos) throws WrongPositionException {
+    private static void swapTwoElementsInArray(Object[] array, int firstNumPos, int secondNumPos) throws WrongPositionException {
         if (firstNumPos < 0 || firstNumPos > array.length ||
                 secondNumPos < 0 || secondNumPos > array.length || firstNumPos == secondNumPos) {
             throw new WrongPositionException("Неправильно указаны позиции элементов для замены");
@@ -80,7 +80,7 @@ public class Main {
         array[secondNumPos] = temp;
     }
 
-    private static <T>ArrayList arrayToArrayList(T[] array){
+    private static <T> ArrayList arrayToArrayList(T[] array) {
         return new ArrayList<>(Arrays.asList(array));
     }
 }
