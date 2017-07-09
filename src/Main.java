@@ -4,37 +4,26 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-//        taskOne();
+        taskOne();
 //        taskTwo();
-        taskThree();
+//        taskThree();
 
     }
 
     public static void taskOne() {
 
-        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
-        Integer[] iArray = new PrimitiveToGeneric(array).getIntegerGeneric();
-//        далее я просто буду сразу обертывать, т.к. для обобщенных типов нужны дженерики, а не примитивы
-//        я пробовал создать отдельный класс для этого, с разными конструкторами для раззых массивов, но всё равно
-//        не продвинулся. Собственно мой вопрос такой: как из int[] сделать Integer[] без лишних телодвижений?
-//        ........
-//        я еще раз перечитал условие и увидел что массив может быть любого ссылочного типа...
+        Integer[] iArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
         Double[] dArray = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 0.0};
         String[] sArray = {" one ", " two ", " three ", " four ", " five ", " six ", " seven "};
-        ArrayOfAnyType<String> sAnyArray = new ArrayOfAnyType<>(sArray);
-        ArrayOfAnyType<Integer> iAnyArray = new ArrayOfAnyType<>(iArray);
-        ArrayOfAnyType<Double> dAnyArray = new ArrayOfAnyType<>(dArray);
         try {
-            iAnyArray.swapTwoElementsInArray(iArray, 0, 4);
-            dAnyArray.swapTwoElementsInArray(dArray, 0, 3);
-            sAnyArray.swapTwoElementsInArray(sArray, 0, 3);
-//            sAnyArray.swapTwoElementsInArray(sArray, 0, 13); проверка на указание правильных позиций
-
+            swapTwoElementsInArray(iArray, 0, 2);
+            swapTwoElementsInArray(dArray, 0, 2);
+            swapTwoElementsInArray(sArray, 0, 2);
         } catch (WrongPositionException e) {
             e.printStackTrace();
         }
-        System.out.println("Swap result in double array: " + Arrays.toString(dArray));
         System.out.println("Swap result in integer array: " + Arrays.toString(iArray));
+        System.out.println("Swap result in double array: " + Arrays.toString(dArray));
         System.out.println("Swap result in string array: " + Arrays.toString(sArray));
     }
 
@@ -87,5 +76,15 @@ public class Main {
         array[firstNumberPos] ^= array[secondNumberPos];
         array[secondNumberPos] ^= array[firstNumberPos];
         array[firstNumberPos] ^= array[secondNumberPos];
+    }
+
+    private static void swapTwoElementsInArray (Object[] array, int firstNumPos, int secondNumPos) throws WrongPositionException {
+        if (firstNumPos < 0 || firstNumPos > array.length ||
+                secondNumPos < 0 || secondNumPos > array.length || firstNumPos == secondNumPos) {
+            throw new WrongPositionException("Неправильно указаны позиции элементов для замены");
+        }
+        Object temp = array[firstNumPos];
+        array[firstNumPos] = array[secondNumPos];
+        array[secondNumPos] = temp;
     }
 }
