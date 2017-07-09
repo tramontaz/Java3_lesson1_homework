@@ -1,12 +1,11 @@
 public class Fruit {
     float weight;
 
-    public float getWeight() {
-        return weight;
+    public Fruit(float weight) {
+        this.weight = weight;
     }
 
-    public Fruit() {
-
-        this.weight = weight;
+    public float getWeight() {
+        return weight;
     }
 }
