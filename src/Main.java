@@ -45,7 +45,6 @@ public class Main {
         System.out.println("A box of apples weighs " + boxWithApple.getWeight()); //weight box with apples
         System.out.println("A box of oranges weight " + boxWithOranges.getWeight()); //weight box with apples
         System.out.println(boxWithApple.compare(boxWithOranges));
-        ArrayList<Apple> aNewBox = boxWithApple.pourFruitsIntoAnotherBox(boxWithApple); //я понял что так неправильно, но я не знаю как по-дугому
     }
 
 //          это я просто баловался для первого задания, для решения задачи не подходит...
