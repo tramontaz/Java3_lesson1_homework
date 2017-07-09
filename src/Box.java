@@ -8,6 +8,10 @@ public class Box<T extends Fruit> {
         box = new ArrayList<>(Arrays.asList(fruits));
     }
 
+    public ArrayList<T> getBox() {
+        return box;
+    }
+
     public void addFruit(T fruit){
         box.add(fruit);
     }
@@ -21,6 +25,11 @@ public class Box<T extends Fruit> {
     }
 
     public boolean compare(Box<? extends Fruit> boxWithSomething) {
-        return getWeight() - boxWithSomething.getWeight() < 0.0001f;
+        return Math.abs(getWeight() - boxWithSomething.getWeight()) < 0.0001f;
+    }
+
+    public void replaceFruitsToAnotherBox(Box<T> anotherBox){
+        anotherBox.box.addAll(this.box);
+        this.box.clear();
     }
 }
